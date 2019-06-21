@@ -1,0 +1,115 @@
+<div class="ui twenty wide field">
+    <label>Emotions</label>
+    <span>  <select id="emotion-dropdown" name="skills" class="ui fluid search dropdown">
+              <option value="any">Any</option>
+<option value="happy">Happy</option>
+            <option value="sad">Sad</option>
+            <option value="angry">Angry</option>
+  <option value="confused">Confused</option>
+              <option value="disgusted">Disgusted</option>
+               <option value="surprised">Surprised</option>
+               <option value="calm">Calm</option>
+</select>
+
+        </span>
+
+</div>
+
+
+<div class="inline fields">
+    <label for="fruit">Gender</label>
+    <div class="field">
+        <div class="ui radio checkbox">
+            <input type="radio" id="gender-any" name="fruit" tabindex="0"  checked="true" class="hidden">
+            <label>Any</label>
+        </div>
+    </div>
+    <div class="field">
+        <div class="ui radio checkbox">
+            <input type="radio" id="gender-male" name="fruit" tabindex="0" class="hidden">
+            <label>Male</label>
+        </div>
+    </div>
+    <div class="field">
+        <div class="ui radio checkbox">
+            <input type="radio" id="gender-female" name="fruit" tabindex="0" class="hidden">
+            <label>Female</label>
+        </div>
+    </div>
+</div>
+
+<div class="ui  field">
+    <label>Age Range</label>
+    <div class="ui segment">
+        <div class="ui top attached label" id="display-age"></div>
+        <div id="age-range" class="ui double olive range"></div>
+
+    </div>
+</div>
+
+<div class="field">
+        <div class="twenty wide field">
+            <div class="ui binary checkbox choices">
+                <input id="isSmiling" type="checkbox" tabindex="0" class="hidden">
+                <label>Smiling</label>
+            </div>
+                <div class="ui binary checkbox choices">
+                    <input id="sunGlasses" type="checkbox" tabindex="0" class="hidden">
+                    <label>Sunglasses</label>
+                </div>
+            <div class="ui binary checkbox choices">
+                <input id="eyeGlasses" type="checkbox" tabindex="0" class="hidden">
+                <label>Eyeglasses</label>
+            </div>
+            <div class="ui binary checkbox choices">
+                <input id="beard" type="checkbox" tabindex="0" class="hidden">
+                <label>Beard</label>
+            </div>
+            <div class="ui binary checkbox choices">
+                <input id="mustache" type="checkbox" tabindex="0" class="hidden">
+                <label>Mustache</label>
+            </div>
+            <div class="ui binary checkbox choices">
+                <input id="eyesOpen" type="checkbox" tabindex="0" class="hidden">
+                <label>Eyes open</label>
+            </div>
+            <div class="ui binary checkbox choices">
+                <input id='mouthOpen' type="checkbox" tabindex="0" class="hidden">
+                <label>Mouth open</label>
+            </div>
+
+        </div>
+</div>
+
+
+<script>
+
+
+    $(document).ready(function () {
+        // Semantic UI Range
+
+        $('.ui.checkbox')
+            .checkbox()
+        ;
+
+        $('#age-range').range({
+            min: 5,
+            max: 90,
+            start: 90,
+            doubleStart: 5,
+            step: 1,
+            verbose: true,
+            debug: true,
+            onChange: function (value) {
+                var
+                    $self = $(this),
+                    firstVal = $self.range('get thumb value'),
+                    secVal = $self.range('get thumb value', 'second');
+                $('#display-age').html('' + secVal + " - " + firstVal);
+            }
+        });
+
+    });
+
+
+</script>
