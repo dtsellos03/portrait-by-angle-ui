@@ -65,6 +65,9 @@ function createCamera() {
 function createControls() {
 
     controls = new THREE.OrbitControls( camera, container );
+    controls.maxPolarAngle = 8*Math.PI/10;
+    controls.minAzimuthAngle = -5*Math.PI/10;
+    controls.maxAzimuthAngle = 5*Math.PI/10;
 
 }
 
