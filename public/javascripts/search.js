@@ -58,7 +58,7 @@ $("#submitButton").click(function () {
         'ageRange': ageRange
     });
     let url = window[_0x2934('0x10')][_0x2934('0x11')] + _0x2934('0x12') + paramString;
-    gtag(_0x2934('0x13'), _0x2934('0x14'), {'event_category': 'na', 'event_label': 'na', 'value': paramString});
+    gtag(_0x2934('0x13'), _0x2934('0x14'), {'event_category': 'na', 'event_label': paramString, 'value': paramString});
     $[_0x2934('0x15')]({
         'url': url, 'beforeSend': function (_0x246f01) {
             _0x246f01[_0x2934('0x16')](_0x2934('0x17'), 0x514 * new Date()[_0x2934('0x18')]());
