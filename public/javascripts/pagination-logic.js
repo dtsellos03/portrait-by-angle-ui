@@ -12,12 +12,20 @@
 
     function renderItems(dataArray) {
         let container = $('#dataContainer');
-        if (dataArray.length > 0) {
-            // replace href
-        }
-        container.empty();
-        for (let item of dataArray) {
-            container.append(generateTemplate(item));
+        if ($('img.pose').length < 1) {
+            for (let item of dataArray) {
+                container.append(generateTemplate(item));
+            };
+        } else {
+            if (dataArray.length > 0) {
+                $('img.pose').each(function (i) {
+                    var $img = $(this);
+                    $img.attr('src', dataArray[i].src);
+                    $img.closest('a').attr('href', dataArray[i].src)
+                });
+            } else {
+                container.empty();
+            }
         }
     }
 

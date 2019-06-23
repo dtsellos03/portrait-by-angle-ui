@@ -3,7 +3,7 @@ function setImages(data) {
         globalDataList = JSON.parse(JSON.stringify(data));
         destroyPagination();
     } else {
-        globalDataList = JSON.parse(JSON.stringify(globalPlaceholders));
+        globalDataList = [];
         destroyPagination();
         $('#errSpace').text('No images matching criteria found. Please try a different combo.')
     }
@@ -64,10 +64,8 @@ $("#submitButton").click(function () {
             _0x246f01[_0x2934('0x16')](_0x2934('0x17'), 0x514 * new Date()[_0x2934('0x18')]());
         }, 'success': function (_0x260bd4) {
             setTimeout(() => {
-             //   $('.pose').transition('scale');
                 setImages(_0x260bd4);
-            }, 500)
-        //    $('.pose').transition('scale');
+            }, 100)
         }, 'error': function (_0x43b272) {
             globalDataList = [];
             destroyPagination();
