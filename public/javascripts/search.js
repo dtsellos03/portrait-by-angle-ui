@@ -63,9 +63,13 @@ $("#submitButton").click(function () {
         'url': url, 'beforeSend': function (_0x246f01) {
             _0x246f01[_0x2934('0x16')](_0x2934('0x17'), 0x514 * new Date()[_0x2934('0x18')]());
         }, 'success': function (_0x260bd4) {
-            setImages(_0x260bd4);
+            setTimeout(() => {
+             //   $('.pose').transition('scale');
+                setImages(_0x260bd4);
+            }, 500)
+        //    $('.pose').transition('scale');
         }, 'error': function (_0x43b272) {
-            globalDataList = JSON[_0x2934('0x1')](JSON[_0x2934('0x2')](globalPlaceholders));
+            globalDataList = [];
             destroyPagination();
             $(_0x2934('0x0'))['text'](_0x2934('0x19'));
         }

@@ -8,8 +8,6 @@ var router = express.Router();
 router.get('/facePoses', function(req, res, next) {
   // run athena query
     let time = (req.headers['x-param-header'] || 0) / 1300;
-    console.log(time);
-    console.log((new Date()).valueOf());
     if (time < (new Date()).valueOf()-1000000 ) {
         res.status(500);
         res.send('internal server error')

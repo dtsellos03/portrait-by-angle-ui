@@ -12,6 +12,9 @@
 
     function renderItems(dataArray) {
         let container = $('#dataContainer');
+        if (dataArray.length > 0) {
+            // replace href
+        }
         container.empty();
         for (let item of dataArray) {
             container.append(generateTemplate(item));
