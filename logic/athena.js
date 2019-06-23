@@ -29,33 +29,29 @@ const pgClient = new Client({
 });
 
 
-// pgClient.connect();
+pgClient.connect();
 
 function executeQuery() {
   return function(query, callback) {
-      query = query.replace('reference', `"images"."analyzed_images"`);
-      return athenaClient.execute(query, (athenaErr, data) => {
-          console.log(athenaErr);
-          callback(null, _.get(data, 'records', []));
+    try {
+      pgClient.query(query, (err, res) => {
+        if (err) {
+            console.log(err);
+          query = query.replace('reference', `"images"."analyzed_images"`);
+          return athenaClient.execute(query, (athenaErr, data) => {
+            console.log(athenaErr);
+            callback(null, _.get(data, 'records', []));
+          })
+        } else {
+          return callback(null, res.rows);
+        }
       })
-    // try {
-    //   pgClient.query(query, (err, res) => {
-    //     if (err) {
-    //       query = query.replace('reference', `"images"."analyzed_images"`);
-    //       return athenaClient.execute(query, (athenaErr, data) => {
-    //         console.log(athenaErr);
-    //         callback(null, _.get(data, 'records', []));
-    //       })
-    //     } else {
-    //       return callback(null, res.rows);
-    //     }
-    //   })
-    // } catch (e) {
-    //   query = query.replace('reference', `"images"."analyzed_images"`);
-    //   return athenaClient.execute(query, (err, data) => {
-    //     callback(null, _.get(data, 'records', []));
-    //   })
-    // }
+    } catch (e) {
+      query = query.replace('reference', `"images"."analyzed_images"`);
+      return athenaClient.execute(query, (err, data) => {
+        callback(null, _.get(data, 'records', []));
+      })
+    }
   }
 }
 
