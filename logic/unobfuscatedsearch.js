@@ -18,6 +18,19 @@ $("#submitButton").click(function () {
     let genderSelector = $('.radio.checkbox.checked input')[0]
     let gender =  genderSelector ? genderSelector.id : 'gender-any';
     let choices = _.map($('.binary.checkbox.checked input'), input => input.id).join('*');
+    let trueChoices = [];
+    let falseChoices = [];
+    $('.toggleButton').each(function() {
+        let button = $(this);
+        let state = button.attr('selectState');
+        if (state && state == 2) {
+            trueChoices.push(button.attr('filterField'));
+        } else if (state && state == 3) {
+            falseChoices.push(button.attr('filterField'));
+        }
+    });
+    const falseChoicesStr = falseChoices.join('*');
+    const trueChoicesStr = trueChoices.join('*');
     let emotion = $('#emotion-dropdown').dropdown('get value');
     let x1 = Math.round(camera.rotation.x / (1 / 180 * Math.PI));
     let x2 = Math.round(camera.rotation.x + (camera.rotation.z * Math.PI) );
@@ -29,7 +42,8 @@ $("#submitButton").click(function () {
     let z2 = Math.round(camera.rotation.z + (camera.rotation.x * Math.PI) );
     let z3 = Math.round(360 * camera.rotation.z * camera.rotation.x);
     let paramString = $.param({
-        choices,
+        trueChoices: trueChoicesStr,
+        falseChoices: falseChoicesStr,
         gender,
         emotion,
         x1, x2, x3, y1, y2, y3, z1, z2, z3,
@@ -44,10 +58,12 @@ $("#submitButton").click(function () {
     $.ajax({url,
         beforeSend: function(xhr){xhr.setRequestHeader('X-param-header', 1300*((new Date()).valueOf()))},
         success: function (data) {
-            setImages(data);
+            setTimeout(() => {
+                setImages(data);
+            }, 100)
         },
         error: function (error) {
-            globalDataList = JSON.parse(JSON.stringify(globalPlaceholders));
+            globalDataList = []
             destroyPagination();
             $('#errSpace').text('An error occurred. Please try again later.');
         }

@@ -29,10 +29,11 @@ function getParams(req) {
     var endAge = req.query.ageRange.split('^')[1]
     var gender = req.query.gender.split('-')[1]
     var emotion = req.query.emotion;
-    var choices = req.query.choices.split('*');
+    var trueChoices = req.query.trueChoices.split('*');
+    var falseChoices = req.query.falseChoices.split('*');
     var age = `lowAge >= ${Number(startAge)} AND highAge <= ${Number(endAge)}`;
     return {
-      pitch, yaw, roll, age, gender, choices, emotion
+      pitch, yaw, roll, age, gender, trueChoices, falseChoices, emotion
     };
 }
 

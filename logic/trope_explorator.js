@@ -1,11 +1,11 @@
 var _ = require('lodash');
 
-function buildChoicesClause(choices) {
+function buildChoicesClause(choices, bool) {
     if (choices.length === 0 || choices[0].length < 2) {
         return ``;
     } else {
         var mapped = _.map(choices, (choice) => {
-            return `${choice} = true` } );
+            return `${choice} = ${bool}` } );
         var clauses = _.join(mapped, ' AND ');
         return `AND ${clauses}`;
     }
@@ -21,7 +21,8 @@ let pitch = Number(params.pitch);
 let gender = params.gender === 'any' ? '5 = 5' : `replace(gender, '"', '') = '${_.capitalize(params.gender)}'`;
 let emotion = params.emotion === 'any' ? '5 = 5' : `strpos(emotions, upper('${params.emotion}')) > 0`;
 let age = params.age;
-let choices = buildChoicesClause(params.choices);
+let positiveChoices = buildChoicesClause(params.trueChoices, 'true');
+let falseChoices = buildChoicesClause(params.falseChoices, 'false');
   return `
  
   SELECT 
@@ -50,7 +51,8 @@ let choices = buildChoicesClause(params.choices);
             AND ${emotion}
             AND ${age}
             AND ${gender}
-            ${choices}
+            ${positiveChoices}
+             ${falseChoices}
         ) AS sub1
  ) AS sub2
  ) AS sub3

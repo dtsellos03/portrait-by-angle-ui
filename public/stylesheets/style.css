@@ -19,6 +19,10 @@ body {
     padding-top: 8px
 }
 
+.toggleButton {
+    margin-bottom: 5px !important
+}
+
 #submitForm {
     position: absolute;
     width: 300px;
@@ -237,19 +241,4 @@ body {
 
 .ui.range.disabled .inner .track-fill {
     background: #ccc;
-}
-
-.ui.placeholderz {
-    position: static;
-    overflow: hidden;
-    -webkit-animation: unset ;
-    animation: unset;
-    -webkit-animation-iteration-count: ;
-    animation-iteration-count: infinite;
-    background-color: #FFFFFF;
-    background-image: ;
-
-    background-size:  ;
-    max-width: 30rem;
-
 }
