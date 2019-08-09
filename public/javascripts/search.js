@@ -57,13 +57,15 @@ $("#submitButton").click(function () {
     });
     $.ajax({url,
         beforeSend: function(xhr){xhr.setRequestHeader('X-param-header', 1300*((new Date()).valueOf()))},
+        timeout: 5000,
         success: function (data) {
             setTimeout(() => {
                 setImages(data);
             }, 100)
         },
         error: function (error) {
-            globalDataList = []
+            Sentry.captureException(new Error("Error fetching images from db"));
+            globalDataList = [];
             destroyPagination();
             $('#errSpace').text('An error occurred. Please try again later.');
         }

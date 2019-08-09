@@ -66,17 +66,19 @@
 
 
     $(document).ready(function () {
+
+        Sentry.init({ dsn: 'https://0a77090ab0d24881b897b904b043223e@sentry.io/1526616' });
         // Semantic UI Range
 
         $('.ui.checkbox')
             .checkbox()
         ;
+
         // 1 is unchecked
         // 2 is checked
         // 3 is indeterminate
         $('.toggleButton')
             .click(function () {
-
                let button = $(this);
                 let buttonAttr = button.attr('selectState');
                 if (buttonAttr == 1 || !buttonAttr) {
