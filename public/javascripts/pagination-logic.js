@@ -19,9 +19,11 @@
         } else {
             if (dataArray.length > 0) {
                 $('img.pose').each(function (i) {
-                    var $img = $(this);
-                    $img.attr('src', dataArray[i].src);
-                    $img.closest('a').attr('href', dataArray[i].src)
+                    if (dataArray[i]) {
+                        var $img = $(this);
+                        $img.attr('src', dataArray[i].src);
+                        $img.closest('a').attr('href', dataArray[i].src)
+                    }
                 });
             } else {
                 container.empty();
