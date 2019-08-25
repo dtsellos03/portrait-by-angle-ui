@@ -64,7 +64,7 @@ $("#submitButton").click(function () {
             }, 100)
         },
         error: function (error) {
-            Sentry.captureException(new Error("Error fetching images from db"));
+        Sentry.captureException(new Error("Error fetching images from db"));
             globalDataList = [];
             destroyPagination();
             $('#errSpace').text('An error occurred. Please try again later.');

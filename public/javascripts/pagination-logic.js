@@ -43,7 +43,7 @@ function initiatePagination() {
     });
 }
 
-initiatePagination()
+initiatePagination();
 
 function destroyPagination() {
     $('#mainPaginationContainer').pagination('destroy');
