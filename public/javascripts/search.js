@@ -1,3 +1,6 @@
+
+const href = window.location.href.split('?')[0];
+
 function setImages(data) {
     if (data.length > 0) {
         globalDataList = JSON.parse(JSON.stringify(data));
@@ -49,7 +52,7 @@ $("#submitButton").click(function () {
         x1, x2, x3, y1, y2, y3, z1, z2, z3,
         ageRange
     });
-    let url = `${window.location.href}api/facePoses?${paramString}`;
+    let url = `${href}api/facePoses?${paramString}`;
     gtag('event', 'made search', {
         'event_category': 'na',
         'event_label': 'na',
