@@ -3,13 +3,13 @@ let globalCards = [];
 
 let globalPlaceholders = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(el => {
     return {
-        src: '/images/face-placeholder.gif'
+        src: `/images/placeholders/${el}.jpg`
     }
 });
 
 let globalSearch = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(el => {
     return {
-        src: 'https://media1.tenor.com/images/3aaadc45f4da67e52850a02aedf68040/tenor.gif?itemid=13427670'
+        src: '/images/giphy.gif'
     }
 });
 

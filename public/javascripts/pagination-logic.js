@@ -20,9 +20,13 @@ function renderItems(dataArray) {
         if (dataArray.length > 0) {
             $('img.pose').each(function (i) {
                 if (dataArray[i]) {
-                    var $img = $(this);
-                    $img.attr('src', dataArray[i].src);
-                    $img.closest('a').attr('href', dataArray[i].src)
+                    const $img = $(this);
+                    $img.attr('src', '/images/giphy.gif');
+                    let delay = Math.random();
+                    setTimeout(() => {
+                           $img.attr('src', dataArray[i].src);
+                        $img.closest('a').attr('href', dataArray[i].src)
+                       }, delay);
                 }
             });
         } else {
