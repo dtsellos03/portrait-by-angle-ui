@@ -1,5 +1,4 @@
 
-
 $(document).ready(function(){
     $('#modalTrigger').click(() => {
         gtag('event', 'clicked about site', {

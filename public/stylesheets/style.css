@@ -3,7 +3,6 @@ body {
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-
 .ignored {
     display: none !important;
 }
@@ -13,6 +12,17 @@ body {
     width: 300px;
     height: 300px;
     padding-top: 20px;
+}
+
+#notificationArea {
+    margin-left: 320px;
+    margin-top: 20px
+}
+
+#mainPaginationContainer {
+    margin-left: 320px;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 #dataContainer {

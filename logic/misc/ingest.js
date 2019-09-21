@@ -1,6 +1,6 @@
 var sharp = require('sharp');
 
-var keys = require('./keyz.js');
+var keys = require('../../keyz.js');
 var uuid = require('uuid');
 var mime = require('mime-types')
 
@@ -87,7 +87,7 @@ function main() {
             return makeRekognition(value, finalArr, callback);
         }, function (err) {
             if (err) console.error(err.message);
-            fs.writeFileSync(`stuff-${sliceValue}.JSON`, JSON.stringify(finalArr));
+            fs.writeFileSync(`${sliceValue}.JSON`, JSON.stringify(finalArr));
             console.log('done');
         });
     });
@@ -107,7 +107,6 @@ function makeRekognition(file, finalArr, cb) {
                 if (err) console.log(err, err.stack); // an error occurred
                 if (data &&  data.FaceDetails && data.FaceDetails[0] && data.FaceDetails[0].Pose) {
                     let emptyObj = {};
-                    let keys = _.values(typesOfAttrs);
                     let emotions = '';
                     _.map(typesOfAttrs, (value, key) => {
                         emptyObj[key] = _.get(data.FaceDetails[0], value);

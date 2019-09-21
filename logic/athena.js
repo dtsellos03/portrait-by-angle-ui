@@ -28,7 +28,6 @@ const pgClient = new Client({
   database: 'reference-angle'
 });
 
-
 pgClient.connect();
 
 function executeQuery() {

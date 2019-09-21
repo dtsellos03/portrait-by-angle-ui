@@ -1,5 +1,5 @@
- function generateTemplate(item) {
-        return `
+function generateTemplate(item) {
+    return `
             <div class="column">
           <div class="ui segment">
             <a href="${item.src}" target="_blank"  class="ui medium image toPlainImage">
@@ -8,28 +8,28 @@
           </div>
         </div>
       `;
-    }
+}
 
-    function renderItems(dataArray) {
-        let container = $('#dataContainer');
-        if ($('img.pose').length < 1) {
-            for (let item of dataArray) {
-                container.append(generateTemplate(item));
-            };
+function renderItems(dataArray) {
+    let container = $('#dataContainer');
+    if ($('img.pose').length < 1) {
+        for (let item of dataArray) {
+            container.append(generateTemplate(item));
+        }
+    } else {
+        if (dataArray.length > 0) {
+            $('img.pose').each(function (i) {
+                if (dataArray[i]) {
+                    var $img = $(this);
+                    $img.attr('src', dataArray[i].src);
+                    $img.closest('a').attr('href', dataArray[i].src)
+                }
+            });
         } else {
-            if (dataArray.length > 0) {
-                $('img.pose').each(function (i) {
-                    if (dataArray[i]) {
-                        var $img = $(this);
-                        $img.attr('src', dataArray[i].src);
-                        $img.closest('a').attr('href', dataArray[i].src)
-                    }
-                });
-            } else {
-                container.empty();
-            }
+            container.empty();
         }
     }
+}
 
 function initiatePagination() {
     $('#mainPaginationContainer').pagination({
@@ -37,7 +37,7 @@ function initiatePagination() {
         locator: 'data',
         className: 'paginationjs-theme-green',
         pageSize: 12,
-        callback: function(response, pagination) {
+        callback: function (response, pagination) {
             renderItems(response);
         }
     });

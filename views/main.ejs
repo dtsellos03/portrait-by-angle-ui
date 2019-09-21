@@ -5,131 +5,72 @@
     <title>Reference Angle</title>
     <meta name="description" content="Find reference images of faces in different orientations.">
 
-  <% include partials/header %>
-  <script src="./javascripts/three.js"></script>
-</head>
+    <% include partials/header %>
 
+</head>
 
 <body>
 
-<script src="./javascripts/orbitcontrols.js"></script>
-<script src="./javascripts/objloader.js"></script>
+<div class="ui small modal sources">
+    <div class="header">
+        Acknowledgments
+    </div>
+    <p style="padding: 10px;">
+        I made this tool to practice drawing
+        heads at different angles - inspired by <a target="_blank" href="https://x6ud.github.io/#/">x6ud's
+            tool for animal references</a>. The photo dataset used is the <a target="_blank"
+                                                                             href="https://github.com/NVlabs/ffhq-dataset">FFHQ
+            set</a>.
+    </p>
+    <p style="padding: 10px;">
+        Images from the <a target="_blank" href="http://www-prima.inrialpes.fr/perso/Gourier/Faces/HPDatabase.html">Head
+            Pose Image Database</a> were also used.
+    </p>
+    <p style="padding: 10px;">
+        Please feel free to email me with suggestions/bugs at <a target="_blank"
+                                                                 href="mailto:arttechnologist@gmail.com">arttechnologist@gmail.com</a>
+        You can donate to support the operating cost of this
+        site (processing the face angles, hosting the images) <a target="_blank"
+                                                                 href="https://ko-fi.com/arttechnologist">here</a> -
+        thanks!
+    </p>
+    <div class="ui container padded segment">
+
+        <p style="padding: 10px;">Other tools used</p>
+        <div class="ui bulleted list">
+            <a class="item" target="_blank"
+               href="https://jsfiddle.net/rjxb7ffy/?utm_source=website&utm_medium=embed&utm_campaign=rjxb7ffy">Semantic
+                UI Range Sliders</a>
+        </div>
+    </div>
+</div>
+
 
 <img id="modalTrigger" style="height: 40px; cursor: pointer;" src="images/logo.png">
-  <div id="mainContainer" >
+<div id="mainContainer">
     <div id="scene-container"></div>
-    <div >
-
-    </div>
     <div id="dataContainer" class="ui four column grid" style="margin-left: 300px;">
-
     </div>
-      <div id="mainPaginationContainer" class="paginationjs" style="margin-left: 320px; margin-top: 20px; margin-bottom: 40px;">
+    <div id="mainPaginationContainer" class="paginationjs"></div>
+    <div id="notificationArea">
+        <h5 id="errSpace"></h5>
+    </div>
 
-      </div>
-      <div style="margin-left: 320px; margin-top: 20px">
-<h5 id="errSpace"></h5>
-      </div>
+    <form class="ui form" id="submitForm">
+        <% include subviews/form.ejs %>
+        <button id="submitButton" type=button class="ui huge center aligned button">
+            Search
+        </button>
+        <div style="padding-top: 20px;">
+            <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script>
+            <script type='text/javascript'>kofiwidget2.init('Help me pay for this site', '#46b798', 'R6R6XKN8');
+                kofiwidget2.draw();</script>
+        </div>
+    </form>
 
-
- <form class="ui form" id="submitForm">
-   <% include subviews/form.ejs %>
-   <button id="submitButton" type=button class="ui huge center aligned button">
-     Search
-   </button>
-     <div style="padding-top: 20px;">
-         <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Help me pay for this site', '#46b798', 'R6R6XKN8');kofiwidget2.draw();</script>
-     </div>
- </form>
-
-  </div>
+</div>
 </body>
 
-<script src="./javascripts/search.js"></script>
-<script src="javascripts/underscore.js"></script>
-
-<script>
-
-    $('#sources').click(function() {
-        $('.ui.modal.sources')
-            .modal('show')
-    });
-
-
-var globalCards = [];
-
-</script>
-
-<script>
-
-    let globalPlaceholders =  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(el => {
-        return {
-            src: '/images/face-placeholder.gif'
-        }
-    });
-
-    let globalSearch = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(el => {
-        return {
-            src: 'https://media1.tenor.com/images/3aaadc45f4da67e52850a02aedf68040/tenor.gif?itemid=13427670'
-        }
-    });
-
-    let globalDataList = JSON.parse(JSON.stringify(globalPlaceholders))
-
-  $(".genre_button").on("click", function() {
-    var choice = $(this).text();
-    $('#genre').text(choice)
-  });
-
-  $(".year_button").on("click", function() {
-    var choice = $(this).text();
-    $('#year').text(choice)
-  });
-
-  var errorHtml = `
-  <div class="ui container errorEmpty">
-  <br>
-    <h3 class="ui center aligned header">Uh oh! An error has occured. Please try again later!</h3>
-    <br><br>
-</div>
-  `;
-  var emptyHtml = `
-    <div class="ui container errorEmpty">
-    <br>
-    <h3 class="ui center aligned header">No films found matching those criteria! Please try a different combination.</h3>
-    <br>
-    <br>
-
-</div>
-  `;
-
-
-
-</script>
-
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="./javascripts/3dcode.js"></script>
-<script>
-
-$('select.dropdown')
-  .dropdown({
-          transition: 'fade up',
-      delimiter: '^',
-      maxSelections: 2,
-      keepOnScreen: false
-      }
-  )
-;
-
-$('.menu .item')
-    .tab()
-;
-
-
-
-
-</script>
-
-<script src="./javascripts/pagination-logic.js"></script>
+<% include partials/footer %>
 
 </html>
