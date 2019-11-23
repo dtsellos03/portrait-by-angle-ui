@@ -22,10 +22,16 @@
                                                                              href="https://github.com/NVlabs/ffhq-dataset">FFHQ
             set</a>.
     </p>
+
     <p style="padding: 10px;">
         Images from the <a target="_blank" href="http://www-prima.inrialpes.fr/perso/Gourier/Faces/HPDatabase.html">Head
             Pose Image Database</a> were also used.
     </p>
+
+    <p style="padding: 10px;">
+        Search button taken from Katherine Kato's <a target="_blank" href="https://codepen.io/kathykato/pen/gOOjgmP">CodePen</a>.
+    </p>
+
     <p style="padding: 10px;">
         Please feel free to email me with suggestions/bugs at <a target="_blank"
                                                                  href="mailto:arttechnologist@gmail.com">arttechnologist@gmail.com</a>
@@ -58,10 +64,14 @@
 
     <form class="ui form" id="submitForm">
         <% include subviews/form.ejs %>
-        <button id="submitButton" type=button class="ui huge center aligned button">
-            Search
-        </button>
-        <div style="padding-top: 20px;">
+        <!--<button id="submitButton" type=button class="ui huge center aligned button">-->
+            <!--Search-->
+        <!--</button>-->
+        <div class="button-body">
+            <button type="button" class="learn-more" id="submit-button">Search</button>
+        </div>
+
+        <div style="padding-top: 35px;">
             <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script>
             <script type='text/javascript'>kofiwidget2.init('Help me pay for this site', '#46b798', 'R6R6XKN8');
                 kofiwidget2.draw();</script>

@@ -3,7 +3,7 @@ let globalCards = [];
 
 let globalPlaceholders = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(el => {
     return {
-        src: `/images/placeholders/${el}.jpg`
+        src: `/images/placeholders/universal.png`
     }
 });
 
@@ -28,7 +28,7 @@ function setImages(data) {
     }
 }
 
-$("#submitButton").click(function () {
+$("#submit-button").click(function () {
     $('#errSpace').text('');
     globalDataList = JSON.parse(JSON.stringify(globalSearch));
     destroyPagination();
